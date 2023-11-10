@@ -25,6 +25,7 @@ Dim closeprice As Double
 Dim red As String
 Dim green As String
 
+Dim ws As Worksheet
 
 ' -- only working in first two sheets* ?? -- '
 For Each ws In Worksheets
@@ -92,31 +93,36 @@ openprice = ws.Range("C2").Value
         Dim maxticker As String
         Dim minticker As String
         Dim maxvolume As String
-        
-    ' stores answers in variables '
-        maxticker = ws.Range("Q2").Value
-        minticker = ws.Range("Q3").Value
-        maxvolume = ws.Range("Q4").Value
-        
+         
     ' finds and prints greatest % increase and decrease and greatest total volume '
             ws.Range("Q2").Value = WorksheetFunction.max(ws.Range("K:K"))
             ws.Range("Q3").Value = WorksheetFunction.Min(ws.Range("K:K"))
             ws.Range("Q4").Value = WorksheetFunction.max(ws.Range("L:L"))
     
+        ' stores answers in variables '
+        maxticker = ws.Range("Q2").Value
+        minticker = ws.Range("Q3").Value
+        maxvolume = ws.Range("Q4").Value
+    
     ' if greatest % increase matches given row, pull ticker name from same row '
        If maxticker = ws.Cells(tablerow, 11).Value Then
             ws.Range("P2").Value = ws.Cells(tablerow, 11 - 2).Value
-            
-            ElseIf minticker = ws.Cells(tablerow, 11).Value Then
+           End If
+           
+            If minticker = ws.Cells(tablerow, 11).Value Then
                 ws.Range("P3").Value = ws.Cells(tablerow, 11 - 2).Value
+                End If
+                
             ' -- not printing ticker ?? -- '
-                ElseIf maxvolume = ws.Cells(tablerow, 12).Value Then
+                If maxvolume = ws.Cells(tablerow, 12).Value Then
                      ws.Range("P4").Value = ws.Cells(tablerow, 12 - 3).Value
+                     
             
-    End If
-
+        End If
 
     Next i
+    
+    tablerow = 2
     
 Next ws
 
