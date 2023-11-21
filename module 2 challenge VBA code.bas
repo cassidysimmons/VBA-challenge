@@ -90,7 +90,10 @@ openprice = ws.Range("C2").Value
             totalvolume = totalvolume + ws.Cells(i, 7).Value
         End If
 
-        Dim maxticker As String
+       
+    Next i
+    
+     Dim maxticker As String
         Dim minticker As String
         Dim maxvolume As String
          
@@ -120,8 +123,6 @@ openprice = ws.Range("C2").Value
             
         End If
 
-    Next i
-    
     tablerow = 2
     
 Next ws
