@@ -27,11 +27,9 @@ Dim green As String
 
 Dim ws As Worksheet
 
-' -- only working in first two sheets* ?? -- '
 For Each ws In Worksheets
 
 ' part I headers for new table columns '
-' -- headers only showing up on first worksheet ?? -- '
 ws.Range("I1").Value = "ticker"
 ws.Range("J1").Value = "yearly change"
 ws.Range("K1").Value = "percent change"
@@ -116,7 +114,6 @@ openprice = ws.Range("C2").Value
                 ws.Range("P3").Value = ws.Cells(tablerow, 11 - 2).Value
                 End If
                 
-            ' -- not printing ticker ?? -- '
                 If maxvolume = ws.Cells(tablerow, 12).Value Then
                      ws.Range("P4").Value = ws.Cells(tablerow, 12 - 3).Value
                      
